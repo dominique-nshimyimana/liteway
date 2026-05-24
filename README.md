@@ -33,14 +33,36 @@ LITEWAY demonstrates that replacing recurrent HAR architectures with structured 
 <img width="993" alt="Details results with 16 HAR datasets" src="https://github.com/user-attachments/assets/7859758e-7310-443f-a4d6-e8b7d4521682" />
 
 ---
+## Experiment and Reproducing
 
-## Datasets
+### Datasets
 
 The evaluated HAR datasets can be downloaded using the links provided in the [`datasets/readme`](datasets/readme.md) directory.
 
+Each dataset should be unzipped and placed in the following structure:
+```
+datasets/
+├── Daphnet_Dataset/
+├── DSADS_Dataset/
+├── HAPTchar_Dataset/
+├── MHEALTH_Dataset/
+├── Motionsense_Dataset/
+├── Opportunity_Dataset/
+├── PAMAP2_Dataset/
+├── REALDISP_Dataset/
+├── RecGym_Dataset/
+├── RWhar_Dataset/
+├── SHO_Dataset/
+├── SkodaHAR_Dataset/
+├── UCIHAR_Dataset/
+├── USC_HAD_Dataset/
+├── WEAR_Dataset/
+└── readme.md
+```
+
 ---
 
-## Training & Evaluation
+### Training & Evaluation
 
 Run training using:
 
@@ -48,12 +70,12 @@ Run training using:
 python3 train.py --seeds [SEED] --model [MODEL] --dataset [DATASET]
 ```
 
-### Available Models
+#### Available Models
 
 - `liteway`
 - `liteway_light`
 
-### Example
+#### Example
 
 ```bash
 python3 train.py --seeds 5 --model liteway --dataset pamap2
