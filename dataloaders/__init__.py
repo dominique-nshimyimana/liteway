@@ -62,12 +62,12 @@ from .dataloader_SKODAR_har import SkodaR_HAR_DATA
 from .dataloader_DSADS_har import DSADS_HAR_DATA
 from .dataloader_DG_har import Daphnet_HAR_DATA
 from .dataloader_USCHAD_har import USC_HAD_HAR_DATA
-from .dataloader_WISDM_har import WISDM_HAR_DATA
+# from .dataloader_WISDM_har import WISDM_HAR_DATA
 from .dataloader_UCI_har import UCI_HAR_DATA
 from .dataloader_RECGYM_har import RECGYM_HAR_DATA
 from .dataloader_MHEALTH_har import Mhealth_HAR_DATA
 from .dataloader_MOTIONSENSE_har import MotionSense_HAR_DATA
-from .dataloader_UTD_MHAD_W_har import UTD_MHAD_W_HAR_DATA
+# from .dataloader_UTD_MHAD_W_har import UTD_MHAD_W_HAR_DATA
 from .dataloader_SHO_har import SHO_HAR_DATA
 from .dataloader_OPPO_Locomotion_har import OpportunityLoc_HAR_DATA
 from .dataloader_WEAR_har import WEAR_HAR_DATA
@@ -84,12 +84,12 @@ data_dict = {"hapt"  : HAPT_HAR_DATA,
              "dg"    : Daphnet_HAR_DATA,
              "uschad": USC_HAD_HAR_DATA,
              "uci"   : UCI_HAR_DATA,
-             "wisdm" : WISDM_HAR_DATA,
+#             "wisdm" : WISDM_HAR_DATA,
              "recgym" : RECGYM_HAR_DATA,
              "mhealth": Mhealth_HAR_DATA,
              "motionsense": MotionSense_HAR_DATA,
              "sho": SHO_HAR_DATA,
-             "utd_mhad_w": UTD_MHAD_W_HAR_DATA,
+#             "utd_mhad_w": UTD_MHAD_W_HAR_DATA,
              "wear": WEAR_HAR_DATA,
              "realdisp" : REALDISP_HAR_DATA,}
 

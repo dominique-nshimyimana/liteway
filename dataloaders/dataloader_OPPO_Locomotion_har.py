@@ -3,7 +3,7 @@ import numpy as np
 import os
 
 from dataloaders.dataloader_base import BASE_DATA
-# TODO the cols ! name
+# nTODO the cols ! name
 # ========================================      OpportunityLoc_HAR_DATA         =============================
 class OpportunityLoc_HAR_DATA(BASE_DATA):
     """
@@ -204,7 +204,7 @@ class OpportunityLoc_HAR_DATA(BASE_DATA):
             sub_data =sub_data.iloc[:,self.used_cols]
             sub_data.columns = self.col_names
 
-            # TODO check missing labels? 
+            # nTODO check missing labels?
             sub_data = sub_data.interpolate(method='linear', limit_direction='both')
 
             sub = int(file[1])
