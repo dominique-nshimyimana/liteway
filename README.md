@@ -64,3 +64,8 @@ python3 train.py --seeds 5 --model liteway --dataset pamap2
 ## License
 
 LITEWAY is released under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+
+### Acknowledgements
+
+We thank the authors of [after acceptance] for providing useful code that were adapted in this work.
