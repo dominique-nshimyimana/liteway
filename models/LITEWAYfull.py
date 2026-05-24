@@ -210,32 +210,3 @@ class LITEWAY(nn.Module):
 
     def number_of_parameters(self):
         return sum(p.numel() for p in self.parameters() if p.requires_grad)
-
-
-if __name__ == '__main__':
-    from torchinfo import summary
-
-    si = 9
-    window_size = 90
-    cls = 19
-    config = {
-        'nb_conv_blocks': 4,
-        'nb_filters': 4,
-        'dilation': 1,
-        'batch_norm': 1,
-        'filter_width': 5,
-        'drop_prob': 0.3,
-        'nb_units_gru': 16,
-        'scale_factor': 2
-    }
-
-    m = LITEWAY(input_shape=(1, 1, window_size, si), nb_classes=cls, config=config)
-    x = torch.randn(16, 1, window_size, si)
-    y = m(x)
-    print(x.shape, y.shape, 'in - out')
-    print(f"Parameters number: {m.number_of_parameters()}")
-
-    #########
-    summary(m)
-    # for p in m.children():
-    #     summary(p)

@@ -4,7 +4,7 @@
 
 TL;DR:
 LITEWAY demonstrates that replacing recurrent HAR architectures with structured convolutions enables highly efficient temporal modeling, achieving strong accuracy while drastically reducing computation, model size, inference time, and energy consumption for real-world TinyML deployment.
-
+They are models: [LITEWAY Full](models/LITEWAYfull.py) and [LITEWAY Light](models/LITEWAYlight.py).
 
 ## LITEWAY Framework
 <!-- [architectures_both.pdf](https://github.com/user-attachments/files/28199870/architectures_both.pdf) -->
