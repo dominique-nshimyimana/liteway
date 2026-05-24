@@ -36,7 +36,7 @@ LITEWAY demonstrates that replacing recurrent HAR architectures with structured 
 
 ## Datasets
 
-The evaluated HAR datasets can be downloaded using the links provided in the [`datasets/`](datasets) directory.
+The evaluated HAR datasets can be downloaded using the links provided in the [`datasets/readme`](datasets/readme.md) directory.
 
 ---
 
