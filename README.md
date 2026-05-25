@@ -4,7 +4,10 @@
 
 TL;DR:
 LITEWAY demonstrates that replacing recurrent HAR architectures with structured convolutions enables highly efficient temporal modeling, achieving strong accuracy while drastically reducing computation, model size, inference time, and energy consumption for real-world TinyML deployment.
-They are models: [LITEWAY Full](models/LITEWAYfull.py) and [LITEWAY Light](models/LITEWAYlight.py).
+
+The proposed architectures are implemented as:
+- [**LITEWAY Full** ](`models/LITEWAYfull.py`)
+- [**LITEWAY Light** ](`models/LITEWAYlight.py`)
 
 ## LITEWAY Framework
 <!-- [architectures_both.pdf](https://github.com/user-attachments/files/28199870/architectures_both.pdf) -->
@@ -33,7 +36,7 @@ They are models: [LITEWAY Full](models/LITEWAYfull.py) and [LITEWAY Light](model
 <img width="993" alt="Details results with 16 HAR datasets" src="https://github.com/user-attachments/assets/7859758e-7310-443f-a4d6-e8b7d4521682" />
 
 ---
-## Experiment and Reproducing
+## Experiments and Reproduction
 
 ### Datasets
 
@@ -90,4 +93,4 @@ LITEWAY is released under the MIT License. See the [LICENSE](LICENSE) file for d
 
 ### Acknowledgements
 
-We thank the authors of [after acceptance] for providing useful code that were adapted in this work.
+We thank the authors of related open-source repositories for providing useful code that were adapted in this work.
