@@ -19,7 +19,7 @@ The proposed architectures are implemented as:
 
 ## Comparison of SOTA and LITEWAY on STM32L4S5
 
-| Model         | Inf. Time (ms) | Weight (KiB) | Activation (KiB) | Cycles/MAC | CPU (% load) | Energy (mJ/Inf) |
+| Model  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;       | Inf. Time (ms) | Weight (KiB) | Activation (KiB) | Cycles/MAC | CPU (% load) | Energy (mJ/Inf) |
 |---------------|----------------|--------------|------------------|-------------|---------------|-----------------|
 | TinyHAR       | 249.01 | 107.48 | 62.70 | 13.51 | 24 | 19.14 |
 | MLPHAR        | 114.81 | 342.41 | 40.54 | 11.99 | 11 | 8.73 |
