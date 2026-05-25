@@ -17,7 +17,7 @@ The proposed architectures are implemented as:
 
 ## Results Summary Across 16 HAR Datasets (s. details below)
 
-<p align="center"> <img src="images/results_summary-1.png" alt="Results summary" width="600"/>  </p>
+<img src="images/results_summary-1.png" alt="Results summary" width="600"/>
 
 
 
