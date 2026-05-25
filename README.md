@@ -10,12 +10,15 @@ The proposed architectures are implemented as:
 - [**LITEWAY Light** ](models/LITEWAYlight.py)
 
 ## LITEWAY Framework
+
 <img src="images/architectures_both.png" alt="LITEWAY Architecture" width="993"/>
 
 
 
 ## Results Summary Across 16 HAR Datasets (s. details below)
-<img src="images/results_summary-1.png" alt="Results summary" width="600"/>
+
+<p align="center"> <img src="images/results_summary-1.png" alt="Results summary" width="600"/>  </p>
+
 
 
 ## Comparison of SOTA and LITEWAY on STM32L4S5
@@ -30,7 +33,8 @@ The proposed architectures are implemented as:
 
 
 ## Details Results
-<img src="images/results_main_box.png" alt="Results summary" width="993"/>
+
+<img  src="images/results_main_box.png" alt="Results summary" width="993"/>
 
 ---
 ## Experiments and Reproduction
