@@ -20,12 +20,6 @@ The proposed architectures are implemented as: [**LITEWAY Full** ](models/LITEWA
 |:---:|:---:|
 | <img src="assets/liteway_performance.png" width="100%"> | <img src="assets/liteway_hardware.png" width="100%"> |
 
-<img src="assets/liteway_performance.png" width="49%">-<img src="assets/liteway_hardware.png" width="49%">
-
-<!-- <img src="assets/results_summary-1.png" alt="Results summary" width="600"/> -->
-<img src="assets/liteway_performance.png" width="49%">
-<img src="assets/liteway_hardware.png" width="49%">
-
 
 ## Comparison of SOTA and LITEWAY on STM32L4S5
 
