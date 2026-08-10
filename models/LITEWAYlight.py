@@ -43,7 +43,7 @@ class ResidualStridedDownsampleStem(nn.Module):
 
 
 class SEConvBlock(nn.Module):
-    def __init__(self, in_channels, out_channels, kernel_size, dilation=1, squeeze_expand='se', activation='', shortcut=''):
+    def __init__(self, in_channels, out_channels, kernel_size, dilation=1):
         super().__init__()
         assert in_channels == out_channels, "Make sure channels match!"
 
@@ -55,25 +55,16 @@ class SEConvBlock(nn.Module):
             dilation=(dilation, 1),                                 # Add dilation here
             groups=in_channels                                      # depthwise
         )
-        if squeeze_expand == 'removed':
-            self.se = None
 
         self.bn = nn.BatchNorm2d(in_channels)
         self.relu = nn.ReLU()
-
-        self.res = nn.Conv2d(in_channels, out_channels, kernel_size=1, bias=False,) if shortcut == 'pw' else None
 
     def forward(self, x):
         x_feats = self.depthwise(x)
         # x_feats = self.se(x_feats)
         x_feats = self.bn(x_feats)
         x_feats = self.relu(x_feats)
-        if self.res is None:
-            return x_feats
-        return x_feats + self.res(x)
-
-
-
+        return x_feats
 
 
 
@@ -126,7 +117,7 @@ class ResidualSCTM(nn.Module):
         h = self.act(h)
         h = self.pw_gate_res(h)
         out = torch.cat([h, self.elu(self.pw_gate_res(x))], dim=1)
-        return out
+        return out.transpose(1, 2)
 
 
 
@@ -150,31 +141,22 @@ class LITEWAYLight(nn.Module):
         self.input_channels = input_shape[3]
         self.seq_length = input_shape[2]
         self.nb_conv_blocks = config.get('nb_conv_blocks', 4)
-        # self.nb_units_gru = max(config.get('nb_units_gru'), torch.tensor(nb_classes).log2().ceil().exp2().int().item())
         self.nb_units_gru = config.get('nb_units_gru', 16)
         self.nb_filters = config.get('nb_filters', 4)
         self.drop_prob = config.get('drop_prob', 0.3)
         self.nb_classes = nb_classes
-
-        self.activation = config.get('activation', '')
-        self.shortcut_deep = config.get('shortcut_deep', '')
-
-        self.shortcut = config.get('shortcut', 'residual')
-        self.squeeze_expand = config.get('squeeze_expand', 'se')
-        self.temporal = config.get('temporal', 'flip')
-        self.aggregation = config.get('aggregation', 'attention')
 
         # Scale Factor
         self.scale_factor = config.get('scale_factor', 2)    # default 2
 
         # ---- Stem blocks (with residual & max-pool) ----
         stem_blocks = [
-            ResidualStridedDownsampleStem(1, self.nb_filters, kernel_size=5, dilation=1, shortcut=self.shortcut, activation=self.activation),
-            ResidualStridedDownsampleStem(self.nb_filters, 2 * self.nb_filters, kernel_size=5, dilation=1, shortcut=self.shortcut, activation=self.activation),
+            ResidualStridedDownsampleStem(1, self.nb_filters, kernel_size=5, dilation=1),
+            ResidualStridedDownsampleStem(self.nb_filters, 2 * self.nb_filters, kernel_size=5, dilation=1),
         ]
         # ---- Repeated bottleneck blocks (no max-pool) ----
         bottleneck_blocks = [
-            SEConvBlock(2 * self.nb_filters, 2 * self.nb_filters, kernel_size=5, dilation=1, squeeze_expand=self.squeeze_expand, activation=self.activation, shortcut=self.shortcut_deep)
+            SEConvBlock(2 * self.nb_filters, 2 * self.nb_filters, kernel_size=5, dilation=1)
             for _ in range(self.nb_conv_blocks)
         ]
         # ---- Feature Extraction & Refinement: Combine all blocks ----
@@ -200,15 +182,10 @@ class LITEWAYLight(nn.Module):
     def forward(self, x):
         x = self.conv_blocks(x)
         B, C, T, C_in = x.shape
-        # x = x.permute(0, 2, 1, 3).reshape(B, T, -1)
         x = x.permute(0, 1, 3, 2).reshape(B, -1, T)
         x = self.dropout(x)
-        # print(f"x.shape: {x.shape} -- Before GRU")
         x = self.sctm_residual(x)
-        x = x.transpose(1, 2)
-        # print(f"x.shape: {x.shape} -- After GRU")
         x = self.attention_pool(x)
-        # print(f"x.shape: {x.shape} -- After attention pooling")
         return self.classifier(x)
 
     def number_of_parameters(self):

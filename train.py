@@ -143,9 +143,7 @@ for ds in datasets:
             #params_log.flush()
             #params_log.close()
 
-            if not os.path.exists(args.to_save_path + "/macs_params.txt"):
-                #os.makedirs(args.to_save_path+ "/macs_params.txt")
-                macs_params_log_file_name = os.path.join(args.to_save_path, "/macs_params.txt")
+            os.makedirs(args.to_save_path, exist_ok=True)
             macs_params_log = open(args.to_save_path+ "/macs_params.txt", "a")
             macs_params_log.write("Model: {}  Dataset: {}  Macs: {}  Params: {}\n".format(args.model_type, args.data_name, macs, params))
             macs_params_log.flush()

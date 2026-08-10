@@ -5,20 +5,19 @@
 TL;DR:
 LITEWAY demonstrates that replacing recurrent HAR architectures with structured convolutions enables highly efficient temporal modeling, achieving strong accuracy while drastically reducing computation, model size, inference time, and energy consumption for real-world TinyML deployment.
 
-The proposed architectures are implemented as:
-- [**LITEWAY Full** ](models/LITEWAYfull.py)
-- [**LITEWAY Light** ](models/LITEWAYlight.py)
+The proposed architectures are implemented as: [**LITEWAY Full** ](models/LITEWAYfull.py) and [**LITEWAY Light** ](models/LITEWAYlight.py)
 
 ## LITEWAY Framework
 
-<img src="images/architectures_both.png" alt="LITEWAY Architecture" width="993"/>
+<img src="assets/architectures_both.png" alt="LITEWAY Architecture" width="993"/>
 
 
 
-## Results Summary Across 16 HAR Datasets (s. details below)
+## Results Summary Across 16 HAR Datasets <!-- (see below for details of the individual datasets) -->
 
-<img src="images/results_summary-1.png" alt="Results summary" width="600"/>
-
+<!-- <img src="assets/results_summary-1.png" alt="Results summary" width="600"/> -->
+<img src="assets/liteway_performance.png" width="49%">
+<img src="assets/liteway_hardware.png" width="49%">
 
 
 ## Comparison of SOTA and LITEWAY on STM32L4S5
@@ -34,35 +33,14 @@ The proposed architectures are implemented as:
 
 ## Details Results
 
-<img  src="images/results_main_box.png" alt="Results summary" width="993"/>
+<img  src="assets/results_main_box.png" alt="Results summary" width="993"/>
 
 ---
 ## Experiments and Reproduction
 
 ### Datasets
 
-The evaluated HAR datasets can be downloaded using the links provided in the [`datasets/readme`](datasets/readme.md) directory.
-<br>
-Each dataset should be unzipped and placed in the following structure:
-```
-datasets/
-├── Daphnet_Dataset/
-├── DSADS_Dataset/
-├── HAPTchar_Dataset/
-├── MHEALTH_Dataset/
-├── Motionsense_Dataset/
-├── Opportunity_Dataset/
-├── PAMAP2_Dataset/
-├── REALDISP_Dataset/
-├── RecGym_Dataset/
-├── RWhar_Dataset/
-├── SHO_Dataset/
-├── SkodaHAR_Dataset/
-├── UCIHAR_Dataset/
-├── USC_HAD_Dataset/
-├── WEAR_Dataset/
-└── readme.md
-```
+To download the evaluated HAR datasets and view the repository's data structure organization, please refer to the [`datasets/readme`](datasets/readme.md) file.
 
 ---
 
@@ -72,12 +50,15 @@ Run training using:
 
 ```bash
 python3 train.py --seeds [SEED] --model [MODEL] --dataset [DATASET]
+
+MODEL: liteway, liteway_light
+DATASET: hapt, wear, realdisp, uschad, rw, recgym, motionsense, dsads, oppo, oppoloc, dg, uci, pamap2, skodar, mhealth, sho
+SEED: 1, 2, 3, 4, 5.
 ```
 
-#### Available Models
-
-- `liteway`
-- `liteway_light`
+<!-- Models:`liteway`, `liteway_light` <br>
+Datasets: `hapt`, `wear`, `realdisp`, `uschad`, `rw`, `recgym`, `motionsense`, `dsads`, `oppo`, `oppoloc`, `dg`, `uci`, `pamap2`, `skodar`, `mhealth`, `sho`
+-->
 
 #### Example
 
@@ -94,4 +75,4 @@ LITEWAY is released under the MIT License. See the [LICENSE](LICENSE) file for d
 
 ### Acknowledgements
 
-We thank the authors of related open-source repositories for providing useful code that were adapted in this work.
+We thank the authors of [TinyHAR](https://doi.org/10.1145/3544794.3558467) open-source repositories for providing useful code that were adapted in this work.

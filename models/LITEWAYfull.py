@@ -160,7 +160,6 @@ class LITEWAY(nn.Module):
         self.input_channels = input_shape[3]
         self.seq_length = input_shape[2]
         self.nb_conv_blocks = config.get('nb_conv_blocks', 4)
-        # self.nb_units_gru = max(config.get('nb_units_gru'), torch.tensor(nb_classes).log2().ceil().exp2().int().item())
         self.nb_units_gru = config.get('nb_units_gru', 16)
         self.nb_filters = config.get('nb_filters', 4)
         self.drop_prob = config.get('drop_prob', 0.8)
@@ -202,9 +201,7 @@ class LITEWAY(nn.Module):
         B, C, T, C_in = x.shape
         x = x.permute(0, 2, 1, 3).reshape(B, T, -1)
         x = self.dropout(x)
-        # print(f"x.shape: {x.shape} -- Before GRU")
         x = self.sctm_highway(x)
-        # print(f"x.shape: {x.shape} -- After GRU")
         x = self.attention_pool(x)
         return self.classifier(x)
 
