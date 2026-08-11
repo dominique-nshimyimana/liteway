@@ -16,20 +16,9 @@ The proposed architectures are implemented as: [**LITEWAY Full** ](models/LITEWA
 ## Results Summary Across 16 HAR Datasets <!-- (see below for details of the individual datasets) -->
 
 
-| Performance | Hardware |
+| Performance | Hardware (STM32L4S5) |
 |:---:|:---:|
 | <img src="assets/liteway_performance.png" width="100%"> | <img src="assets/liteway_hardware.png" width="100%"> |
-
-
-## Comparison of SOTA and LITEWAY on STM32L4S5
-
-| Model  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;       | Inf. Time (ms) | Weight (KiB) | Activation (KiB) | Cycles/MAC | CPU (% load) | Energy (mJ/Inf) |
-|---------------|----------------|--------------|------------------|-------------|---------------|-----------------|
-| TinyHAR       | 249.01 | 107.48 | 62.70 | 13.51 | 24 | 19.14 |
-| MLPHAR        | 114.81 | 342.41 | 40.54 | 11.99 | 11 | 8.73 |
-| TinierHAR     | 81.42 | 39.54 | 14.43 | 25.58 | 8 | 6.36 |
-| **LITEWAY-F** | 56.71 | 10.63 | 16.35 | 33.86 | 5 | 4.35 |
-| **LITEWAY-L** | 37.44 | 10.07 | 16.03 | 30.54 | 3 | 2.90 |
 
 
 ## Details Results
